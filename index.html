@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WebVR Cinema</title>
+    <script src="lib/aframe.min.js"></script>
+    <script src="lib/aframe-event-set-component.min.js"></script>
+    <script src="lib/aframe-html-shader.min.js"></script>
+    <style>
+      #file-input-html {
+        background: #111;
+        font-size: 50px;
+        padding: 30px;
+      }
+      #file-input-html p {
+        background: #081F37;
+        color: #EFEFEF;
+        font-family: monospace;
+        padding: 20px 50px;
+      }
+      #file-input-html p.hover {
+        background: #2E79BA;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a-scene>
+      <a-entity event-set="_event: cursor-mouseenter; _target: #file-input-html p; class: hover,
+                           _event: cursor-mouseleave; _target: #file-input-html p; class: null"
+                geometry="primitive: plane; height: 1; width: 1"
+                material="shader: html; fps: 10; target: #file-input-html"
+                position="0 0 -2"></a-entity>
+
+      <a-sky color="#111"></a-sky>
+
+      <a-entity camera look-controls>
+        <a-cursor material="opacity: 0.2"></a-cursor>
+      </a-entity>
+
+      <div id="file-input-html" style="position: absolute; z-index: -1">
+        <p>Select a Video</p>
+      </div>
+    </a-scene>
+  </body>
+</html>
